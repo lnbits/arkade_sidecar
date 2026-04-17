@@ -72,6 +72,9 @@ curl -X POST http://127.0.0.1:8765/v1/mnemonic \
 | `ARKADE_STREAM_KEEPALIVE_MS`       | `15000`                          | SSE keepalive comment interval            |
 | `ARKADE_STREAM_HEARTBEAT_MS`       | `30000`                          | SSE heartbeat interval                    |
 | `ARKADE_STATE_PERSIST_DEBOUNCE_MS` | `1000`                           | State persistence debounce                |
+| `ARKADE_CORS_ALLOW_ORIGIN`         | —                                | Optional allowed browser origin           |
+| `ARKADE_CORS_ALLOW_HEADERS`        | `Content-Type, x-api-key`        | Allowed CORS request headers              |
+| `ARKADE_CORS_ALLOW_METHODS`        | `GET, POST, OPTIONS`             | Allowed CORS methods                      |
 
 ## Notes
 
@@ -81,6 +84,8 @@ curl -X POST http://127.0.0.1:8765/v1/mnemonic \
   SSE stream once claimed into the Arkade wallet.
 - Payment and invoice lookup endpoints are backed by local persisted state so
   LNbits can poll by `checking_id`.
+- CORS is disabled by default. Set `ARKADE_CORS_ALLOW_ORIGIN` if you want a
+  browser app such as `test-ui` to call the sidecar directly.
 
 ## Test UI
 

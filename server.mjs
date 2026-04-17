@@ -33,7 +33,7 @@ const STREAM_HEARTBEAT_MS = parseInt(
   process.env.ARKADE_STREAM_HEARTBEAT_MS || "30000",
   10,
 );
-const CORS_ALLOW_ORIGIN = process.env.ARKADE_CORS_ALLOW_ORIGIN || "*";
+const CORS_ALLOW_ORIGIN = process.env.ARKADE_CORS_ALLOW_ORIGIN || "";
 const CORS_ALLOW_HEADERS = (
   process.env.ARKADE_CORS_ALLOW_HEADERS || "Content-Type, x-api-key"
 )
@@ -50,13 +50,13 @@ const CORS_ALLOW_METHODS = (
   .join(", ");
 const STATE_PATH =
   process.env.ARKADE_SIDECAR_STATE_PATH ||
-  path.join(process.cwd() + '/data', "arkade-sidecar-state.json");
+  path.join(process.cwd() + "/data", "arkade-sidecar-state.json");
 const STORAGE_PATH =
   process.env.ARKADE_STORAGE_PATH ||
-  path.join(process.cwd() + '/data', "arkade-wallet.sqlite");
+  path.join(process.cwd() + "/data", "arkade-wallet.sqlite");
 const SWAP_STORAGE_PATH =
   process.env.ARKADE_SWAP_STORAGE_PATH ||
-  path.join(process.cwd() + '/data', "arkade-swaps.sqlite");
+  path.join(process.cwd() + "/data", "arkade-swaps.sqlite");
 const STATE_PERSIST_DEBOUNCE_MS = parseInt(
   process.env.ARKADE_STATE_PERSIST_DEBOUNCE_MS || "1000",
   10,
@@ -212,6 +212,9 @@ function upsertPayment(record) {
 }
 
 function getCorsHeaders() {
+  if (!CORS_ALLOW_ORIGIN) {
+    return {};
+  }
   return {
     "access-control-allow-origin": CORS_ALLOW_ORIGIN,
     "access-control-allow-headers": CORS_ALLOW_HEADERS,
