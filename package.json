@@ -1,0 +1,19 @@
+{
+  "name": "lnbits-arkade-sidecar",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node server.mjs",
+    "format": "prettier --write .",
+    "check": "prettier --check . && node --check server.mjs && ARKADE_DISABLE_SERVER=1 node -e \"import('./server.mjs').catch(err => { console.error(err); process.exit(1) })\""
+  },
+  "dependencies": {
+    "@arkade-os/boltz-swap": "0.3.17",
+    "@arkade-os/sdk": "0.4.16",
+    "better-sqlite3": "^12.4.1",
+    "eventsource": "^4.1.0"
+  },
+  "devDependencies": {
+    "prettier": "^3.7.4"
+  }
+}
