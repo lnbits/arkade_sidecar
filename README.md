@@ -1,4 +1,4 @@
-# Arkade L2 sidecar
+# Arkade Sidecar
 
 This sidecar exposes a small HTTP API for LNbits to talk to the Arkade SDK
 using Boltz-powered Lightning swaps.
