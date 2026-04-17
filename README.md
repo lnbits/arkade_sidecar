@@ -1,7 +1,6 @@
-# Arkade L2 sidecar
+# Arkade Sidecar
 
-This sidecar exposes a small HTTP API for LNbits to talk to the Arkade SDK
-using Boltz-powered Lightning swaps.
+This sidecar exposes an HTTP API for LNbits to use Arkade for lightning payments. 
 
 Docs:
 
@@ -84,22 +83,3 @@ curl -X POST http://127.0.0.1:8765/v1/mnemonic \
   SSE stream once claimed into the Arkade wallet.
 - Payment and invoice lookup endpoints are backed by local persisted state so
   LNbits can poll by `checking_id`.
-- CORS is disabled by default. Set `ARKADE_CORS_ALLOW_ORIGIN` if you want a
-  browser app such as `test-ui` to call the sidecar directly.
-
-## Test UI
-
-A static browser test harness lives in `./test-ui`.
-
-Serve it locally, for example:
-
-```bash
-cd test-ui
-python3 -m http.server 8080
-```
-
-Then open:
-
-```text
-http://127.0.0.1:8080
-```
